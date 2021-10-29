@@ -1,0 +1,33 @@
+import random
+
+def numeri(indovinanumero):
+    cows = 0
+    bulls = 0
+    for i in range(0, 4):
+        if indovinanumero[i] == numero[i]:
+            cows += 1
+        elif indovinanumero[i] in numero:
+        	bulls += 1
+    return cows, bulls
+
+if __name__=="__main__":
+    gioco = True #gotta play the game
+    numero = str(random.randint(1000,9999)) #random 4 digit number
+    guesses = 1
+    cow = 0
+
+    nome = input("Type your name\n")
+    print("{} welcome to Cows and bulls".format(nome))
+    print("Now you have to guess a four-digit number I'm thinking\n",
+    	  "Remember that:\nCow = correct digit in the correct location\nBull = correct digit in the wrong location")
+    print("Press exit to leave the game")
+
+    while cow < 4:
+        tentativo = input("Type a 4 digit number\n")
+        cow, bull = numeri(tentativo)
+        print("Cows: ", cow)
+        print("Bulls: ", bull)
+        if cow == 4:
+        	print("Wow {}, you guess the number ", numero, "in", guesses, "attempts!".format(nome))
+        else:
+        	guesses += 1
