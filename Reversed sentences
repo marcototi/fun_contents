@@ -1,0 +1,37 @@
+def frase1(w):
+	return ' '.join(w.split()[::-1])
+
+frase = input("Type a sentence\n")
+print(frase1(frase))
+
+
+# method 1: loop through the words and insert each word at the begining of the result list
+def reverse1(x):
+  y = x.split()
+  result = []
+  for word in y:
+    result.insert(0,word)
+  return " ".join(result)
+
+# method 2
+def reverse2(x):
+  y = x.split()
+  return " ".join(y[::-1])
+  
+# method 3
+def reverse3(x):
+  y = x.split()
+  return " ".join(reversed(y))
+
+# method 4
+def reverse4(x):
+  y = x.split()
+  y.reverse()
+  return " ".join(y)
+
+# test code
+test1 = input("Enter a sentence: ")
+print (reverse1(test1))
+print (reverse2(test1))
+print (reverse3(test1))
+print (reverse4(test1))
