@@ -1,0 +1,16 @@
+numero = int(input("Choose a number: "))
+
+if numero % 4 == 0:
+	print("Wow, not only even, but also divisible by four!")
+elif numero % 2 == 0:
+	print("You choose an even number!")
+else:
+	print("You choose an odd number!")
+
+num1 = int(input("Choose another number: "))
+num2 = int(input("And another nummber: "))
+
+if num1%num2 == 0 or num2%num1 == 0:
+	print("Well done, you choose two numbers perfectly divisilble between them!")
+else:
+	print("These two numbers are not divisible between them")
