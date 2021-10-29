@@ -1,0 +1,43 @@
+name1 = str(input("Insert your name\n"))
+name2 = str(input("Insert your name too\n"))
+
+stop1 = False
+
+while not stop1:
+
+	giocata1 = input(nome1 + ", choose from rock, paper, scissors\n")
+	giocata2 = input(nome2 + ", choose from rock, paper, scissors\n")
+
+	if giocata1.lower() == giocata2.lower():
+		print("It's a draw! Do it again")
+	elif giocata1.lower() == "paper".lower() and giocata2.lower() == "scissors".lower():
+		print(nome2 + "WON")
+	elif giocata1.lower() == "paper".lower() and giocata2.lower() == "rock".lower():
+		print(nome1 + "WON")
+	elif giocata1.lower() == "scissors".lower() and giocata2.lower() == "paper".lower():
+		print(nome1 + "WON")
+	elif giocata1.lower() == "scissors".lower() and giocata2.lower() == "rock".lower():
+		print(nome2 + "WON")
+	elif giocata1.lower() == "rock".lower() and giocata2.lower() == "scissors".lower():
+		print(nome1 + "WON")
+	elif giocata1.lower() == "rock".lower() and giocata2.lower() == "paper".lower():
+		print(nome2 + "WON")
+	else:
+		print("You have to insert rock, paper or scissors, try again!")
+	
+	stop2 = False
+	
+	while not stop2:
+		domanda = input("Do you want to play again? ")
+		if domanda == "yes".lower():
+			stop2 = True
+			print("LET'S START ANOTHER MATCH!")
+		elif domanda == "yep".lower():
+			stop2 = True
+			print("LET'S START ANOTHER MATCH!")
+		elif domanda == "no".lower():
+			stop1 = True
+			print("All right, see ya!")
+			break
+		else:
+			print("You have to answer yes or no (or yep)!")
