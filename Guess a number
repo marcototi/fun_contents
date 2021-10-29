@@ -1,0 +1,64 @@
+import random
+
+nome = input("Inserisci il tuo nome \n")
+
+n = random.randint(1, 9)
+count = 0
+
+while True:
+	numero = input("{} digit a number between 1 and 9\n(Type exit if you want to leave the game)\n".format(nome))
+	if numero == "exit":
+		print("Bye {}, see ya!".format(nome))
+		break
+	elif int(numero) > n:
+		count +=1
+		print("{} try a smaller number". format(nome))
+	elif int(numero) < n:
+		count +=1
+		print("{} try a larger number". format(nome))
+	elif int(numero) == n:
+		count +=1
+		print("It took you {} attempts".format(count))        
+		print("The number was {}".format(numero)) 
+		print("WELL DONE {} YOU WON!".format(nome))
+	else:
+		pass
+
+import random
+
+nome = input("Come ti chiami?\n")
+print("Hi {}, think of a number between 1 and 100, I'll try to guess it ".format(nome))
+print("{} type - if the number is smaller and + if it's larger".format(nome))
+
+MINIMUM = 0
+MAXIMUM = 100
+NUMBER = random.randint(MINIMUM, MAXIMUM)
+TRY = 0
+RUNNING = True
+ANSWER = None
+
+while RUNNING:
+    print("Does your number is %s?\n" % str(NUMBER))
+    ANSWER = input()
+    if "no" in ANSWER.lower() and "-" in ANSWER.lower():
+        NUMBER -= random.randint(1, 6)
+    elif "no" in ANSWER.lower() and "+" in ANSWER.lower():
+        NUMBER += random.randint(1, 6)
+    elif ANSWER.lower() == "no":
+    	print("Larger or smaller?")
+    	ANSWER = input()
+    	if ANSWER.lower() == "+":
+    		NUMBER += random.randint(1, 6)
+    	elif ANSWER.lower() == "-":
+        	NUMBER -= random.randint(1, 6)
+    elif ANSWER.lower() == "si" or "sì":
+        if TRY < 5:
+            print ("Yesss! It took you only %s attempts!" % str(TRY))
+        elif TRY < 5 and TRY < 15:
+            print ("Not too bad for a robot. %s attempts!" % str(TRY))
+        else:
+            print ("Could go better, %s attempts." % str(TRY))
+        RUNNING = False
+    TRY += 1
+    
+print ("Thanks for playing, see ya!")
