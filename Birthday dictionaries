@@ -1,0 +1,114 @@
+import json
+
+birthdays = {
+        'Albert Einstein': '03/14/1879',
+        'Benjamin Franklin': '01/17/1706',
+        'Ada Lovelace': '12/10/1815',
+        'Donald Trump': '06/14/1946',
+        'Rowan Atkinson': '01/6/1955'}
+
+with open("Compleanni.json", "w") as f:
+    json.dump(birthdays, f)
+
+
+if __name__ == '__main__':
+
+    with open("Compleanni.json", "r") as f:
+        info = json.load(f)
+
+    print('Welcome to the birthday dictionary. We know the birthdays of:')
+    for name in birthdays:
+        print(name)
+
+    print('Who\'s birthday do you want to look up?')
+    name = input()
+    
+    if name in birthdays:
+        print('{}\'s birthday is {}.'.format(name, birthdays[name]))
+    else:
+        print('Sadly, we don\'t have {}\'s birthday.'.format(name))
+
+import json
+from collections import Counter
+
+
+birthday = {}
+with open('Compleanni.json', 'r') as f:
+          birthday = json.load(f)
+
+def add_entry():
+    name = input('Who do you want to add to the Birthday Dictionnary?\n').title()
+    date = input('When is {} born?\n'.format(name))
+    birthday[name] = date
+    with open('birthdays.json', 'w') as f:
+        json.dump(birthday, f)
+    print('{} was added to my birthday list\n'.format(name))
+
+def find_date():
+    name = input("who's birthday do you want to know?\n").title()
+    try :
+        if birthday[name]:
+            print('{} is born on {}\n'.format(name, birthday[name]))
+    except KeyError:
+        print('{} is not in the list\n'.format(name))
+
+def list_entries():
+    print('The current entries in my birthday list are:\n============================================')
+    for key in birthday:
+        print(key.ljust(31), ':', birthday[key])
+    print()
+
+while True:
+    what_next = input('What do you want to do next? you can: Add, Find, List, Quit\n').capitalize()
+    if what_next == 'Quit':
+        print('Good Bye')
+        raise SystemExit(0)
+    elif what_next == 'Add':
+        add_entry()
+    elif what_next == 'Find':
+        find_date()
+    elif what_next == 'List':
+        list_entries()
+
+months = []
+
+num_to_string = {
+    1: "January",
+    2: "February",
+    3: "March", 
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"}
+
+for name, birthday_string in birthday.items():
+    month = int(birthday_string.split("/")[0])
+    months.append(num_to_string[month])
+
+print(Counter(months))
+
+import json
+from collections import Counter
+
+
+with open("Compleanni.json", "r") as f:
+    birthdays = json.load(f)
+months = []
+for x in birthdays.values():
+    value = x[0:2]
+    final = value.replace('01', 'January').replace('02', 'February').replace('03', 'March').replace('04','April').replace('05','May').replace('06','June').replace('07','July').replace('08','August').replace('09','September').replace('10', 'October').replace('11', 'November').replace('12','December')
+    months.append(final)
+from bokeh.plotting import figure, show, output_file
+output_file("plot.html")
+x_categories = list(Counter(months).keys())
+x = list(Counter(months).keys())
+y = list(Counter(months).values())
+p = figure()
+p = figure(x_range=x_categories)
+p.vbar(x=x, top=y, width=0.5)
+show(p)
